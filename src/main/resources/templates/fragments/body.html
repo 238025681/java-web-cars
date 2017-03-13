@@ -1,0 +1,48 @@
+<div class="container" th:fragment="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="btn-block">
+				<a class="btn btn-primary" role="button" th:href="@{/customers/all/ascending}">Ascending Order</a>
+				<a class="btn btn-primary" role="button" th:href="@{/customers/all/descending}">Descending Order</a>
+			</div>
+			<br />
+			<table>
+				<tr>
+					<th>NAME</th>
+					<th>BIRTH DATE</th>
+					<th>YOUNG DRIVER</th>
+				</tr>
+				<tr th:each="customer : ${customers}">
+					<td th:text="${customer.name}">Onions</td>
+					<td th:text="${#dates.format(customer.birthDate, 'dd-MM-yyyy')}"></td>
+					<td th:text="${customer.youngDriver}? 'yes' : 'no'"></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!--Cars Table-->
+
+<div class="container" th:fragment="cars-container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<select th:replace="~{fragments/select-menu :: select-menu-make}"></select>
+			<br />
+			<table>
+				<tr>
+					<th>MAKE</th>
+					<th>MODEL</th>
+					<th>TRAVELLED DISTANCE</th>
+				</tr>
+				<tr th:each="car : ${cars}">
+					<td th:text="${car.make}"></td>
+					<td th:text="${car.model}"></td>
+					<td th:text="|${car.travelledDistance} km|"></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>

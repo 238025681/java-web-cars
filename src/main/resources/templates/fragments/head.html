@@ -1,0 +1,21 @@
+<head th:fragment="cars-head">
+	<title th:if="${pageTitle}" th:text="${pageTitle}">Customers</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{../../bootstrap.min.css}"/>
+	<link rel="stylesheet" href="../static/tables.css" th:href="@{../../tables.css}"/>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<link href="../static/ie10-viewport-bug-workaround.css" rel="stylesheet" th:href="@{../../ie10-viewport-bug-workaround.css}"/>
+
+	<!-- Custom styles for this template -->
+	<link href="sticky-footer.css" rel="stylesheet" th:href="@{../../sticky-footer.css}" />
+
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script src="../static/js/jquery.min.js" th:src="@{../../js/jquery.min.js}"></script>
+	<script src="../static/js/bootstrap.min.js" th:src="@{../../js/bootstrap.min.js}"></script>
+</head>

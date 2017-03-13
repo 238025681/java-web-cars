@@ -1,0 +1,3 @@
+<select th:field="*{makers}"  th:remove="all-but-first" th:fragment="select-menu-make" id="makers" >
+	<option th:each="make : ${makers}" th:value="${make}" th:text="${make}"></option>
+</select>

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="~{fragments/head :: cars-head}" th:with="pageTitle='Cars'">
-		<title>Home</title>
+		<title>Customers</title>
 
 	</head>
 	<body>
 		<!-- Static navbar -->
 		<nav th:replace="~{fragments/header :: cars-navBar}" ></nav>
 
+		<!-- Content -->
+		<div th:replace="~{fragments/body :: ${table}}"></div>
+
 		<!-- Static footer -->
 		<div th:replace="~{fragments/footer :: footer}"></div>
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script src="../static/js/ie10-viewport-bug-workaround.js" th:src="@{../../js/ie10-viewport-bug-workaround.js}"></script>
+		<script src="../static/js/select_menu.js" th:src="@{../../js/select_menu.js}"></script>
 
 	</body>
 </html>
