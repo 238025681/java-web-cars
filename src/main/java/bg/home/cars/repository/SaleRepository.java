@@ -5,17 +5,15 @@
  */
 package bg.home.cars.repository;
 
-import javax.persistence.EntityManager;
+import bg.home.cars.entity.Sale;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Kalin
  */
-public class EntityMan {
-		
-		EntityManager entityManager;
+@Repository
+public interface SaleRepository extends JpaRepository<Sale, Long>{
 	
-	void test(){
-		entityManager.createQuery("SELECT s FROM Supplier AS s WHERE s.importer = :importer");
-	}
 }

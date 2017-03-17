@@ -10,3 +10,8 @@ $(function () {
 });
 
 $("#makers").prop("selectedIndex", -1);
+
+$('.ls-modal').on('click', function(e){
+  e.preventDefault();
+  $('.custom-modal').modal('show').find('.modal-body').load($(this).attr('href'));
+});

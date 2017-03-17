@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bg.home.cars.services;
 
 import bg.home.cars.dtoModels.viewDto.CarsViewDto;
+import bg.home.cars.dtoModels.viewDto.CarsViewDtoWithParts;
 import java.util.List;
 
 /**
@@ -14,9 +10,13 @@ import java.util.List;
  */
 public interface CarService {
 
-	List<CarsViewDto> findAllCarsByMaker(String maker);
+	List<CarsViewDtoWithParts> findAllCarsByMaker(String maker);
 
 	List<CarsViewDto> findAll();
+
+	List<CarsViewDtoWithParts> findAllWhitParts();
+
+	CarsViewDtoWithParts findByIdWhitParts(long id);
 
 	List<String> findAllMakers();
 }

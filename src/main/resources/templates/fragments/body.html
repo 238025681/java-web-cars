@@ -1,21 +1,24 @@
+<!--Customers Table-->
 <div class="container" th:fragment="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="btn-block">
 				<a class="btn btn-primary" role="button" th:href="@{/customers/all/ascending}">Ascending Order</a>
 				<a class="btn btn-primary" role="button" th:href="@{/customers/all/descending}">Descending Order</a>
 			</div>
 			<br />
-			<table>
+			<table class="table-bordered">
 				<tr>
 					<th>NAME</th>
 					<th>BIRTH DATE</th>
 					<th>YOUNG DRIVER</th>
+					<th>DETAILS</th>
 				</tr>
 				<tr th:each="customer : ${customers}">
 					<td th:text="${customer.name}">Onions</td>
 					<td th:text="${#dates.format(customer.birthDate, 'dd-MM-yyyy')}"></td>
 					<td th:text="${customer.youngDriver}? 'yes' : 'no'"></td>
+					<td  th:replace="~{fragments/modal :: modal-customer}"></td>
 				</tr>
 			</table>
 		</div>
@@ -27,19 +30,82 @@
 
 <div class="container" th:fragment="cars-container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<select th:replace="~{fragments/select-menu :: select-menu-make}"></select>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-12">
+				<a class="btn btn-primary" role="button" th:href="@{/cars/}">All</a>
+				<br />
+				<br />
+				<select  th:replace="~{fragments/select-menu :: select-menu-make}"></select>
+			</div>
 			<br />
-			<table>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<table class="table-bordered">
 				<tr>
 					<th>MAKE</th>
 					<th>MODEL</th>
 					<th>TRAVELLED DISTANCE</th>
+					<th>PARTS</th>
 				</tr>
 				<tr th:each="car : ${cars}">
 					<td th:text="${car.make}"></td>
 					<td th:text="${car.model}"></td>
 					<td th:text="|${car.travelledDistance} km|"></td>
+					<td  th:replace="~{fragments/modal :: modal}"></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!--Suppliers Table-->
+
+<div class="container" th:fragment="suppliers-container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<a class="btn btn-primary" role="button" th:href="@{/suppliers/local}">Local</a>
+			<a class="btn btn-primary" role="button" th:href="@{/suppliers/importers}">Importers</a>
+			<a class="btn btn-primary" role="button" th:href="@{/suppliers/}">All</a>
+			<br />
+			<br />
+			<table class="table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>NUM OF PARS</th>
+				</tr>
+				<tr th:each="supplier : ${suppliers}">
+					<td th:text="${supplier.id}"></td>
+					<td th:text="${supplier.name}"></td>
+					<td th:text="${#lists.size(supplier.parts)}"></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!--Sale Table-->
+<div class="container" th:fragment="sale-container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<br />
+			<table class="table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>CAR</th>
+					<th>CUSTOMER</th>
+					<th>PRICE</th>
+				</tr>
+				<tr th:each="sale : ${sales}" th:object="${sale}">
+					<td th:text="*{id}"></td>
+					<td th:text="|*{car.make} *{car.model}|"></td>
+					<td th:text="*{customer.name}"></td>
+					<td th:text="*{price}"></td>
 				</tr>
 			</table>
 		</div>

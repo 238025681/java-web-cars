@@ -38,6 +38,7 @@ public class Part implements Serializable {
     @Column(name = "quantity")
     private int quantity;
     
+    
     @ManyToOne
     private Supplier supplier;
     

@@ -1,23 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bg.home.cars.dtoModels.viewDto;
+
+import java.util.Set;
 
 /**
  *
  * @author Kalin
  */
-public class CarsViewDto {
-
+public class CarsViewDtoWithParts {
+	
 	private Long id;
-
+	
 	private String make;
 
 	private String model;
 
 	private long travelledDistance;
+	
+	private Set<PartsViewDto> parts;
 
 	public Long getId() {
 		return id;
@@ -27,7 +27,6 @@ public class CarsViewDto {
 		this.id = id;
 	}
 
-	
 	public String getMake() {
 		return make;
 	}
@@ -52,4 +51,12 @@ public class CarsViewDto {
 		this.travelledDistance = travelledDistance;
 	}
 
+	public Set<PartsViewDto> getParts() {
+		return parts;
+	}
+
+	public void setParts(Set<PartsViewDto> parts) {
+		this.parts = parts;
+	}
+	
 }

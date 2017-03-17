@@ -7,11 +7,15 @@ package bg.home.cars.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,53 +25,65 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    
-    @Column(name="name")
-    private String name;
-    
-    @Column(name="date_of_birth")
-    private Date dateOfBirth;
-    
-    @Column(name="young_driver")
-    private boolean youngDriver;
 
-    public Customer() {
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-    public long getId() {
-        return id;
-    }
+	@Column(name = "name")
+	private String name;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
 
-    public String getName() {
-        return name;
-    }
+	@Column(name = "young_driver")
+	private boolean youngDriver;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@OneToMany(mappedBy = "customer")
+	private Set<Sale> sales;
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+	public Customer() {
+	}
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+	public Set<Sale> getSales() {
+		return sales;
+	}
 
-    public boolean isYoungDriver() {
-        return youngDriver;
-    }
+	public void setSales(Set<Sale> sales) {
+		this.sales = sales;
+	}
 
-    public void setYoungDriver(boolean youngDriver) {
-        this.youngDriver = youngDriver;
-    }
-    
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public boolean isYoungDriver() {
+		return youngDriver;
+	}
+
+	public void setYoungDriver(boolean youngDriver) {
+		this.youngDriver = youngDriver;
+	}
+
 }

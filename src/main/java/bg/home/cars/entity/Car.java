@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,69 +21,78 @@ import javax.persistence.Table;
  * @author kalin
  */
 @Entity
-@Table(name="cars")
+@Table(name = "cars")
 public class Car implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name="make")
-    private String make;
-    
-    @Column(name="model")
-    private String model;
-    
-    @Column(name="travelled_distance")
-    private long travelledDistance;
-    
-    
-    @ManyToMany
-    private Set<Part> parts;
+	@Column(name = "make")
+	private String make;
 
-    public Car() {
-    }
+	@Column(name = "model")
+	private String model;
 
-    public Set<Part> getParts() {
-        return parts;
-    }
+	@Column(name = "travelled_distance")
+	private long travelledDistance;
 
-    public void setParts(Set<Part> parts) {
-        this.parts = parts;
-    }
+	@ManyToMany
+	private Set<Part> parts;
+	
+	@OneToMany(mappedBy = "car")
+	private Set<Sale> sale;
 
-    public Long getId() {
-        return id;
-    }
+	public Car() {
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Set<Sale> getSale() {
+		return sale;
+	}
 
-    public String getMake() {
-        return make;
-    }
+	public void setSale(Set<Sale> sale) {
+		this.sale = sale;
+	}
 
-    public void setMake(String make) {
-        this.make = make;
-    }
+	
+	public Set<Part> getParts() {
+		return parts;
+	}
 
-    public String getModel() {
-        return model;
-    }
+	public void setParts(Set<Part> parts) {
+		this.parts = parts;
+	}
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public long getTravelledDistance() {
-        return travelledDistance;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setTravelledDistance(long travelledDistance) {
-        this.travelledDistance = travelledDistance;
-    }
+	public String getMake() {
+		return make;
+	}
 
-   
-    
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public long getTravelledDistance() {
+		return travelledDistance;
+	}
+
+	public void setTravelledDistance(long travelledDistance) {
+		this.travelledDistance = travelledDistance;
+	}
+
 }

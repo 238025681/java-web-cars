@@ -1,0 +1,64 @@
+<td th:fragment="modal">
+	<a th:href="'#'+${car.id}" data-toggle="modal" class="btn bg-success">Parts</a>
+	<!-- Modal -->
+	<div class="modal fade" th:id="${car.id}" aria-labelledby="tiketLabel" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					
+					<h4 class="modal-title" th:id="make" th:text="${car.make}"></h4>
+					<span th:text="${car.model}"></span>
+					
+				</div>
+				<div class="modal-body">
+					<h2 class="modal-title" th:id="price">PARTS</h2>
+					<br />
+					<table class="table-bordered">
+					  <tr>
+						<th>NAME</th>
+						<th>PRICE</th>
+						
+					  </tr>
+					  <tr th:each="parts : ${car.parts}">
+						<td th:text="${parts.name}"></td>
+						<td th:text="${parts.price}"></td>
+						
+					  </tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+			      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    </div>
+			</div>
+		</div>
+	</div> 
+</td>
+
+
+<!--Modal Customer-->
+
+<td th:fragment="modal-customer">
+	<a th:href="'#'+${customer.id}" data-toggle="modal" class="btn bg-success">Details</a>
+	<!-- Modal -->
+	<div class="modal fade" th:id="${customer.id}" aria-labelledby="tiketLabel" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					
+					<h4 class="modal-title" th:id="make" th:text="${customer.name}"></h4>
+					
+				</div>
+				<div class="modal-body">
+					<h2 class="modal-title" th:id="details">Details</h2>
+					<br />
+					<span class="modal-dialog" th:text="|Spend ${customer.spentMoney == 0 ? 0 : #numbers.formatDecimal(customer.spentMoney,0,2)} money|"></span>
+					<br />
+					<span class="modal-dialog" th:text="|Bought ${customer.carNumbers}  cars|"></span>
+				</div>
+				<div class="modal-footer">
+			      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    </div>
+			</div>
+		</div>
+	</div> 
+</td>
